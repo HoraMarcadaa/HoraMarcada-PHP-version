@@ -1,0 +1,77 @@
+/* Estilo do Formulário de Reserva */
+.reservation-form {
+    background-color: #f8f9fa;
+    padding: 20px;
+    margin: 40px auto;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-family: 'Arial', sans-serif;
+}
+
+.reservation-form h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #343a40;
+}
+
+.reservation-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.reservation-form label {
+    font-size: 16px;
+    color: #495057;
+    margin-bottom: 5px;
+}
+
+.reservation-form input, .reservation-form select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.reservation-form input:focus, .reservation-form select:focus {
+    border-color: #80bdff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(128, 189, 255, 0.5);
+}
+
+.reservation-form button {
+    background-color: #007bff;
+    color: white;
+    font-size: 18px;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.reservation-form button:hover {
+    background-color: #0056b3;
+}
+
+.reservation-form input[type="date"], .reservation-form input[type="time"] {
+    max-width: 300px;
+    align-self: center;
+}
+
+.reservation-form button:active {
+    transform: scale(0.98);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+    .reservation-form {
+        max-width: 90%;
+    }
+}

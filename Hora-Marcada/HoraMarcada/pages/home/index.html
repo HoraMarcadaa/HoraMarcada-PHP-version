@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="horamarcada.css">
+    <link rel="stylesheet" href="form.css">
+    <script src="https://kit.fontawesome.com/6558a6f744.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Hora Marcada</title>
+</head>
+
+<body>
+     <!--Início-->
+    <header>
+        <div class="inicio">
+            <!--Icone do mascote de início da página-->
+            <img class="logo" src="img/Logo anhanguera.png" alt="Logo">
+            <div class="Marca">Hora Marcada</div>
+            <!--Foto do úsuario do site -->
+            <div class="usuario" id="userCircle"></div>
+            <input type="file" id="upload" accept="image/*" style="display:none">
+           
+        </div>
+        <div class="linha"></div>
+    </header>
+
+    <main>
+     <!--Laboratórios-->
+        <div class="Lab">Reserva De Salas: Laboratório</div>
+
+<!-- Owl Carousel Container -->
+<div class="owl-carousel owl-theme">
+    <div class="item"><img src="img/Sala 02.png" alt="sala01"></div> 
+    <div class="item"><img src="img/Sala 03.png" alt="sala02"></div>
+    <div class="item"><img src="img/Sala 02.png" alt="sala03"></div>
+    <div class="item"><img src="img/Sala 03.png" alt="sala04"></div>
+    <div class="item"><img src="img/Sala 02.png" alt="sala05"></div>
+    <div class="item"><img src="img/Sala 03.png" alt="sala06"></div>
+</div>
+
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!-- Owl Carousel JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    $(document).ready(function(){
+        var texts = ["Lab. 1 informática", "Lab. 2 informática", "Lab. 3 informática", "Lab. 4 informática", "Lab. 5 informática", "Lab. 6 informática"];
+        $('.owl-carousel .item').each(function(index){
+            var textDiv = $('<div>' + texts[index] + '</div>');
+            textDiv.css({
+                'position': 'absolute',
+                'bottom': '50%',
+                'left': '50%',
+                'transform': 'translate(-50%, 50%)',
+                'background-color': 'rgba(0, 0, 0, 0.5)',
+                'color': 'white',
+                'padding': '5px',
+                'border-radius': '5px'
+            });
+            $(this).append(textDiv);
+            $(this).css('position', 'relative');
+        });
+
+        $('.owl-carousel').owlCarousel({
+            loop:true,
+            margin:10,
+            nav:true,
+            responsive:{
+                0:{
+                    items:1
+                },
+                600:{
+                    items:3
+                },
+                1000:{
+                    items:4
+                }
+            }
+        });
+
+        // Custom CSS for navigation buttons
+        $('.owl-nav').css({
+            'position': 'absolute',
+            'width': '100%',
+            'top': '50%',
+            'transform': 'translateY(-50%)',
+            'display': 'flex',
+            'justify-content': 'space-between'
+        });
+
+        $('.owl-nav .owl-prev, .owl-nav .owl-next').css({
+            'background-color': 'rgba(0, 0, 0, 0.5)',
+            'color': 'white',
+            'padding': '20px',  // Increased padding for larger size
+            'border-radius': '50%',
+            'font-size': '30px',  // Increased font size for larger arrows
+            'top': '50%',  // Center vertically within the container
+            'transform': 'translateY(-50%)'
+        });
+
+        // Standardize image sizes
+        $('.owl-carousel .item img').css({
+            'width': '100%',
+            'height': 'auto',
+            'max-height': '300px'  // Adjust the max-height as needed
+        });
+
+        // Remove white band
+        $('.owl-carousel .item').css({
+            'background-color': 'transparent'
+        });
+    });
+</script>
+
+<!-- Formulário de Reserva de Sala -->
+<div class="reservation-form">
+    <h2>Faça sua Reserva</h2>
+    <form action="/Hora-Marcada/HoraMarcada/pages/home/processar_reserva.php" method="POST">
+
+        <label for="name">Nome do Usuário:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="room">Selecione a Sala:</label>
+        <select id="room" name="room" required>
+            <option value="Lab 1 informática">Lab. 1 informática</option>
+            <option value="Lab 2 informática">Lab. 2 informática</option>
+            <option value="Lab 3 informática">Lab. 3 informática</option>
+            <option value="Lab 4 informática">Lab. 4 informática</option>
+            <option value="Lab 5 informática">Lab. 5 informática</option>
+            <option value="Lab 6 informática">Lab. 6 informática</option>
+        </select>
+
+        <label for="date">Data da Reserva:</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="start_time">Horário de Início:</label>
+        <input type="time" id="start_time" name="start_time" required>
+
+        <label for="end_time">Horário de Término:</label>
+        <input type="time" id="end_time" name="end_time" required>
+
+        <button type="submit">Reservar</button>
+    </form>
+</div>
+
+        
+
+    <!--Footer-->
+<footer>
+    <div class="Final">
+        <div class="Rodape">
+            <img class="Logo" src="img/Logo anhanguera.png" alt="Logo">
+            <div class="Info">
+                <div class="Email">
+                    <span class="E-mail">E-mail: </span>
+                    <span>anhaguera@gmail.com</span>
+                </div>
+                <div class="Telefone">
+                    <span class="Contato">Telefone: </span>
+                    <span>(11) 94049-4654</span>
+                </div>
+                <div class="Endereco">
+                    <span class="Local">Endereço:</span>
+                    <span>Av. Braz Leme, 3029 - Santana, São Paulo - SP, 02022-011</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+</main>
+</body>
+</html>
+
+
+<script src="HoraMarcada.js"></script>
+</html>
+

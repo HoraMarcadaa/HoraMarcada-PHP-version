@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="horamarcada.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="form.css">
     <script src="https://kit.fontawesome.com/6558a6f744.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -19,25 +19,43 @@
             <img class="logo" src="img/Logo anhanguera.png" alt="Logo">
             <div class="Marca">Hora Marcada</div>
             <!--Foto do úsuario do site -->
-            <div class="usuario" id="userCircle"></div>
-            <input type="file" id="upload" accept="image/*" style="display:none">
-           
+            
+            <?php echo $_SESSION['user_image']; ?> 
+            
+            
+            <div class="user-menu">
+                <div id="welcome">
+                    Olá
+                    <span id="username"></span> 
+
+                    <!-- Aqui você pode adicionar a imagem de perfil -->
+                <!-- ESSE MOSTRA VEI<img id="profile-picture" alt="Imagem de perfil" /> -->
+
+                </div>
+                
+                <img src="img/main.png" alt="" class="profile-pic" onclick="toggleMenu()">
+                <span><?php echo $_SESSION['nome']; ?> </span>
+                <div id="dropdown-menu" class="menu hidden">
+                    <a href="../usuario/editar.php"><i class="fas fa-cog"></i> Editar seu perfil</a>
+                    <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Sair</a>
+                </div>
+            </div>
         </div>
         <div class="linha"></div>
     </header>
 
     <main>
      <!--Laboratórios-->
-        <div class="Lab">Reserva De Salas: Laboratório</div>
+        <div class="Lab">Reserva De Salas: Laboratórios</div>
 
 <!-- Owl Carousel Container -->
 <div class="owl-carousel owl-theme">
-    <div class="item"><img src="img/Sala 02.png" alt="sala01"></div> 
-    <div class="item"><img src="img/Sala 03.png" alt="sala02"></div>
-    <div class="item"><img src="img/Sala 02.png" alt="sala03"></div>
-    <div class="item"><img src="img/Sala 03.png" alt="sala04"></div>
-    <div class="item"><img src="img/Sala 02.png" alt="sala05"></div>
-    <div class="item"><img src="img/Sala 03.png" alt="sala06"></div>
+    <div class="item"><img src="img/Sala 02.png" class="sales"alt="sala01"></div> 
+    <div class="item"><img src="img/Sala 03.png" class="sales"alt="sala02"></div>
+    <div class="item"><img src="img/Sala 04.png" class="sales"alt="sala03"></div>
+    <div class="item"><img src="img/Sala 01.png" class="sales"alt="sala04"></div>
+    <div class="item"><img src="img/Sala 02.png" class="sales"alt="sala05"></div>
+    <div class="item"><img src="img/Sala 01.png" class="sales"alt="sala06"></div>
 </div>
 
 <!-- jQuery -->
@@ -122,7 +140,8 @@
     <form action="/Hora-Marcada/HoraMarcada/pages/home/processar_reserva.php" method="POST">
 
         <label for="name">Nome do Usuário:</label>
-        <input type="text" id="name" name="name" required>
+        <input type="text" id="name" name="name"required>
+
 
         <label for="room">Selecione a Sala:</label>
         <select id="room" name="room" required>
@@ -178,6 +197,6 @@
 </html>
 
 
-<script src="HoraMarcada.js"></script>
+<script src="script.js"></script>
 </html>
 

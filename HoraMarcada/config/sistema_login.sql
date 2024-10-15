@@ -8,6 +8,7 @@ CREATE TABLE usuarios (
     senha VARCHAR(255) NOT NULL
 );
 
+SELECT * FROM usuarios;
 
 CREATE TABLE Salas (
     ID_Sala INT PRIMARY KEY AUTO_INCREMENT,
@@ -37,3 +38,4 @@ CREATE TABLE Reservas (
     FOREIGN KEY (ID_Usuario) REFERENCES usuarios(id),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+SELECT * FROM Reservas;

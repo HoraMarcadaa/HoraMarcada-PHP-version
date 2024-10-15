@@ -1,6 +1,21 @@
 <?php
 // Inclui o arquivo de conexão com o banco de dados
 include('../CadastroPHP/conexao.php');
+session_start(); // Iniciar a sessão
+
+if (!isset($_SESSION['user_id'])) {
+    // Se não houver sessão, redirecionar para o login
+    header("Location: /Hora-Marcada/HoraMarcada/pages/CadastroPHP/index.html");
+    exit();
+}
+
+// Aqui, você pode usar o ID do usuário para buscar dados no banco, como a imagem de perfil
+// Receber dados do formulário
+$user_id = $_SESSION['user_id'];
+$nome = $_POST["username"];
+$email = $_POST["email"];
+$senha = $_POST["password"];
+
 
 // Pegando os dados do formulário
 $nome_usuario = $_POST['name'];
@@ -27,7 +42,7 @@ if ($result_sala->num_rows > 0) {
     $result_verificar = $conn->query($sql_verificar);
 
     if ($result_verificar->num_rows > 0) {
-        echo "<script>alert('A sala já está indisponível nesse horário.'); window.location.href = 'index.html';</script>";
+        echo "<script>alert('A sala já está indisponível nesse horário.'); window.location.href = 'index.php';</script>";
     } else {
         // Inserir os dados na tabela de reservas
         $sql = "INSERT INTO Reservas (Nome_Usuario, ID_Sala, Data_Reserva, Hora_Inicio, Hora_Fim)

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esqueceu sua senha?</title>
+    <link rel="stylesheet" href="esq.css">
+</head>
+<body>
+    <div class="container">
+        <div class="reset-box">
+            <h2>Esqueceu sua senha?</h2>
+            <p>Digite o seu e-mail cadastrado para redefinir a senha</p>
+            <form action="reset_senha.php" method="POST">
+                <div class="input-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+                </div>
+                <button type="submit">Enviar e-mail de redefinição</button>
+            </form>
+            <div class="back-link">
+                <a href="../CadastroPHP/index.html">Voltar ao login</a>
+            </div>
+        </div>
+    </div>
+   
+</body>
+</html>

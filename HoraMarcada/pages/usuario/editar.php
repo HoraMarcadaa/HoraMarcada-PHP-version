@@ -18,12 +18,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $nome = $_POST['username'];
         $email = $_POST['email'];
         $senha = $_POST['password']; // Captura a nova senha
-
+    
         // Atualiza os dados no banco de dados
         if (!empty($senha)) {
             // Se a senha foi fornecida, atualize-a
             $senha_hash = password_hash($senha, PASSWORD_DEFAULT); // Gera o hash da nova senha
-
+    
             $sql = "UPDATE usuarios SET nome = ?, email = ?, senha = ? WHERE id = ?";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("sssi", $nome, $email, $senha_hash, $user_id); // Corrigido para usar "sssi"
@@ -33,17 +33,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("ssi", $nome, $email, $user_id);
         }
-
+    
         if ($stmt->execute()) {
             echo "<script>alert('Dados atualizados com sucesso!');</script>";
         } else {
             echo "<script>alert('Erro ao atualizar os dados.');</script>";
         }
-
+    
         $stmt->close();
     } else {
         echo "<script>alert('Por favor, preencha todos os campos.');</script>";
     }
+    
 }
 
 // Obter os dados do usuário atualizado
@@ -81,8 +82,8 @@ $conn->close();
     <div class="profile-container">
         <h1>Editar Perfil</h1>
         
-        <!-- IMAGEM DO PERFIL -->
-        <div class="profile-image-container">
+   <!-- IMAGEM DO PERFIL -->
+   <div class="profile-image-container">
             <img id="profile-img" src="img/main.png" alt="Profile Image">
             <label for="upload-img" class="edit-icon">
                 <input type="file" id="upload-img" style="display: none;">
@@ -113,6 +114,8 @@ $conn->close();
     </div>
 </div>
 </form>
+
+
 
 <!--
 <div class="user-info">
